@@ -38,6 +38,7 @@ func main() {
 }
 
 func InitSSHClientSession() (*ssh.Client, *ssh.Session) {
+	// ip:port eg. 10.1.2.3:22
 	SSH_ADDRESS := os.Getenv("SSH_ADDRESS")
 	SSH_USERNAME := os.Getenv("MIKROTIK_USER")
 	SSH_PASSWORD := os.Getenv("MIKROTIK_PASSWORD")
