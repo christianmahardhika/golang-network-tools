@@ -27,7 +27,7 @@ func main() {
 		var (
 			text = c.Text()
 		)
-		client, session := StartSSHSession()
+		client, session := InitSSHClientSession()
 		result := RunCommand(session, text)
 		defer client.Close()
 		defer session.Close()
@@ -37,7 +37,7 @@ func main() {
 
 }
 
-func StartSSHSession() (*ssh.Client, *ssh.Session) {
+func InitSSHClientSession() (*ssh.Client, *ssh.Session) {
 	SSH_ADDRESS := os.Getenv("SSH_ADDRESS")
 	SSH_USERNAME := os.Getenv("MIKROTIK_USER")
 	SSH_PASSWORD := os.Getenv("MIKROTIK_PASSWORD")
