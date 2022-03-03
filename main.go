@@ -40,8 +40,8 @@ func main() {
 func InitSSHClientSession() (*ssh.Client, *ssh.Session) {
 	// ip:port eg. 10.1.2.3:22
 	SSH_ADDRESS := os.Getenv("SSH_ADDRESS")
-	SSH_USERNAME := os.Getenv("MIKROTIK_USER")
-	SSH_PASSWORD := os.Getenv("MIKROTIK_PASSWORD")
+	SSH_USERNAME := os.Getenv("SSH_USERNAME")
+	SSH_PASSWORD := os.Getenv("SSH_PASSWORD")
 
 	sshConfig := &ssh.ClientConfig{
 		User:            SSH_USERNAME,
@@ -84,7 +84,7 @@ func RunCommand(session *ssh.Session, command string) (result string) {
 		log.Fatal("Error starting bash. " + err.Error())
 	}
 	commands := []string{
-		"quit",
+		"exit",
 	}
 	for _, cmd := range commands {
 		if _, err = fmt.Fprintln(stdin, cmd); err != nil {
